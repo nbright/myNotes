@@ -1,0 +1,16 @@
+type Note 
+@model
+@key(name: "byName", fields: ["username", "id"],  queryField: "notesByUserName")
+@auth(
+    rules: [
+      {allow: owner, ownerField: "owner", operations: [create, update, delete]},
+    ])
+{
+    id: ID!
+    bad: String
+    good: String
+    tomorrow: String
+    description: String!
+    createdAt: AWSDateTime
+    username: String!
+}
